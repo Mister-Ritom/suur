@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:suur/pages/download_page.dart';
 import 'package:suur/provider/player_provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,10 +30,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final player = Provider.of<PlayerProvider>(context);
-    final pages = const [
+    final pages = [
       Center(child: Text("Page 1")),
       Center(child: Text("Page 2")),
-      Center(child: Text("Page 3")),
+      DownloadPage(),
     ];
 
     return Scaffold(

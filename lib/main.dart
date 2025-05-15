@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:suur/pages/home_page.dart';
+import 'package:suur/provider/player_provider.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,7 +13,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: ChangeNotifierProvider(
+        create: (context) => PlayerProvider(),
+        child: HomePage(),
+      ),
       debugShowCheckedModeBanner: false,
       title: 'Suur',
       theme: ThemeData(
