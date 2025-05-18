@@ -9,6 +9,7 @@ class PlayerProvider extends ChangeNotifier {
   int _duration = 0;
   int get duration => _duration;
   final AudioPlayer _audioPlayer = AudioPlayer();
+  AudioPlayer get audioPlayer => _audioPlayer;
 
   PlayerProvider() {
     _audioPlayer.onPlayerStateChanged.listen((state) {
@@ -28,11 +29,13 @@ class PlayerProvider extends ChangeNotifier {
   }
 
   void play() {
+    _audioPlayer.resume();
     _isPlaying = true;
     notifyListeners();
   }
 
   void pause() {
+    _audioPlayer.pause();
     _isPlaying = false;
     notifyListeners();
   }

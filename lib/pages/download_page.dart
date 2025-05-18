@@ -61,9 +61,9 @@ class _DownloadPageState extends State<DownloadPage> {
       if (dir == null) return _showMessage('Download directory not found');
 
       final filename = _title ?? 'video';
-      final filePath = '${dir.path}/$filename';
+      final filePath = '${dir.path}/Suur/$filename';
       final file = File(
-        '$filePath/music_${_audioStreams[_selectedIndex].bitrate.kiloBitsPerSecond}kbps.${_audioStreams[_selectedIndex].container}',
+        '$filePath/music_${_audioStreams[_selectedIndex].bitrate.kiloBitsPerSecond}kbps.webm',
       );
 
       if (await file.exists()) await file.delete();
@@ -84,7 +84,7 @@ class _DownloadPageState extends State<DownloadPage> {
   }
 
   Future<void> _writeMetadata(String dir) async {
-    final file = File('$dir/manifest.txt');
+    final file = File('$dir/manifest.json');
     if (await file.exists()) await file.delete();
     await file.create(recursive: true);
 
